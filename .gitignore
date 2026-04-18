@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+*.spec
+
+# PyInstaller build artifacts
+*.exe
+*.dll
+*.pyd
+*.zip
+base_library.zip
+# Encryption keys (NEVER commit these!)
+*.key
+key.key
+# Virtual environments
+venv/
+.env/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups folder
+backups/
+
+# Logs
+*.Logs

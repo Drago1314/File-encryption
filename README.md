@@ -1,122 +1,60 @@
-**Introduction**
+# File Encryption and Decryption Tool
 
-This project involves the development of a Python-based file encryption and decryption tool designed to enhance data security. Utilizing symmetric encryption through the `cryptography` library, the tool ensures the confidentiality of sensitive files. A graphical user interface (GUI) built with Tkinter facilitates user-friendly interactions, enabling seamless encryption, decryption, and backup management. The application is designed for portability, allowing users to generate password-protected encryption keys and handle various file types without requiring additional dependencies.
+A Python-based file encryption and decryption tool with a graphical user interface, designed for secure file handling using symmetric encryption.
 
-**Objective**
+## Features
 
-The primary goals of this project are to strengthen programming proficiency and provide hands-on experience in the following areas:
+- Symmetric Encryption -- Uses Fernet (AES-128-CBC) from the cryptography library
+- Password-Protected Keys -- PBKDF2-HMAC key derivation with 100,000 iterations
+- GUI Interface -- Tkinter-based interface with progress bars and themed widgets
+- Automated Backups -- Creates backups before encryption to prevent data loss
+- Multi-Format Support -- Encrypts .txt, .jpg, .pdf, .docx, and more
+- Batch Processing -- Handle multiple files simultaneously
+- Portable Executable -- Packaged with PyInstaller for standalone use
 
-* **File Encryption and Decryption**: Implementing secure encryption and decryption mechanisms using the `cryptography` library.
-* **Graphical User Interface (GUI)**: Designing an intuitive user interface to streamline encryption and decryption processes.
-* **Password Protection**: Employing password-based key derivation (PBKDF2HMAC) for secure encryption key management.
-* **Backup Management**: Implementing an automated backup system to prevent accidental data loss.
-* **Portability**: Packaging the application into a standalone executable for seamless deployment on Windows machines without requiring a Python environment.
+## Quick Start
 
-**Relevance to the Course**
+### From Source
+```bash
+# Clone the repo
+git clone https://github.com/Drago1314/File-encryption.git
+cd File-encryption
 
-This project reinforces key technical competencies, including:
+# Install dependencies
+pip install cryptography ttkthemes
 
-* **File Handling**: Efficiently managing binary file read/write operations for encryption and decryption.
-* **Cryptography**: Applying industry-standard encryption techniques to ensure data security.
-* **GUI Development**: Constructing an interactive and responsive interface using Tkinter and `ttkthemes`.
-* **Error Handling**: Implementing exception handling mechanisms for incorrect passwords, corrupted files, and missing dependencies.
-* **Software Deployment**: Utilizing PyInstaller to package the tool into a portable executable, demonstrating real-world software distribution strategies.
+# Run the tool
+python encrypt_decrypt_gui.py
+```
 
-**Implementation**
+### Standalone Executable
+Download the latest release and run encrypt_decrypt_gui.exe -- no Python installation required.
 
-### Encryption and Decryption Mechanism
+## How It Works
 
-* **Encryption**: The tool employs the Fernet symmetric encryption algorithm from the `cryptography` library. A unique encryption key is generated and protected via a user-defined password.
-* **Decryption**: The decryption process utilizes the same key and password, ensuring data integrity and confidentiality.
+1. Generate Key -- Create a password-protected encryption key
+2. Select Files -- Choose file(s) to encrypt or decrypt
+3. Process -- Watch progress bar as files are encrypted/decrypted
+4. Backup -- Original files backed up automatically in backups/ folder
 
-### Secure Key Derivation
+## Important Notes
 
-* The encryption key is derived using the PBKDF2HMAC algorithm with a fixed salt and 100,000 iterations for enhanced security.
-* Users must input the correct password to generate or load the encryption key.
+- Never forget your password -- files cannot be decrypted without it
+- Don't edit encrypted files -- binary modification causes irreversible corruption
+- Keep key.key safe -- losing it means losing access to encrypted files
 
-### Graphical User Interface
+## Tech Stack
 
-* The GUI provides options for key generation, file encryption, file decryption, and access to user instructions.
-* Progress bars visually represent the encryption and decryption processes.
+- Python 3.12 -- Core language
+- cryptography -- Fernet symmetric encryption
+- Tkinter + ttkthemes -- GUI framework
+- PyInstaller -- Executable packaging
 
-### Automated Backup System
+## License
 
-* Prior to encryption, the tool generates a backup of the original file in a dedicated "backups" folder, allowing file recovery if necessary.
+This project is licensed under the MIT License -- see the LICENSE file for details.
 
-### Software Packaging
+## Author
 
-* The tool is compiled into a single executable using PyInstaller, ensuring portability and ease of distribution.
-
-**Key Features**
-
-* **File Encryption and Decryption**:
-
-  * Supports common file formats, including `.txt`, `.jpg`, `.pdf`, `.docx`, etc.
-  * Enables batch processing for handling multiple files simultaneously.
-* **Password Protection**:
-
-  * Encryption keys are secured using a user-defined password to prevent unauthorized access.
-* **Automated Backup System**:
-
-  * Generates backups in a dedicated "backups" folder to mitigate accidental data loss.
-* **Progress Indicators**:
-
-  * Displays progress bars to keep users informed during encryption and decryption.
-* **Help & Documentation**:
-
-  * A built-in "Help" section provides comprehensive usage instructions and security best practices.
-* **Portability**:
-
-  * The application runs as a standalone executable without requiring Python installation.
-
-**Challenges and Solutions**
-
-### Challenge 1: File Corruption During Encryption
-
-* **Issue**: Editing an encrypted file results in irreversible corruption.
-* **Solution**: Implemented user warnings within the GUI to prevent direct modification of encrypted files.
-
-### Challenge 2: Password Management
-
-* **Issue**: Users cannot decrypt files if they forget their password.
-* **Solution**: Integrated clear instructions to remind users of password security best practices.
-
-### Challenge 3: Packaging Dependencies
-
-* **Issue**: Ensuring all required dependencies, such as `key.key` and the "backups" folder, are included in the packaged executable.
-* **Solution**: Created a `.spec` file for PyInstaller to bundle necessary files, ensuring compatibility across different machines.
-
-### Challenge 4: Cross-Platform Compatibility
-
-* **Issue**: Ensuring the executable runs on various Windows configurations, including restricted environments like college PCs.
-* **Solution**: Conducted extensive testing on multiple machines to verify dependency inclusion and execution stability.
-
-**Conclusion**
-
-### Project Summary
-
-This project successfully demonstrates key cybersecurity principles, emphasizing secure file handling and encryption. Major takeaways include:
-
-* **Hands-on Cryptography**: Practical experience with encryption algorithms and secure key management.
-* **GUI Development**: Implementation of an intuitive, interactive interface.
-* **Software Deployment**: Understanding the process of creating portable executables for real-world application.
-
-### Lessons Learned
-
-The development process highlighted the significance of:
-
-* Thorough planning and testing to ensure data security and integrity.
-* Comprehensive user guidance to prevent unintended misuse.
-* Iterative debugging to address issues related to packaging and dependency management.
-
-**References**
-
-* **Python Official Documentation**: Comprehensive references for Tkinter, `cryptography`, and PyInstaller.
-* **Cryptography Library**: [https://cryptography.io](https://cryptography.io)
-* **PyInstaller Documentation**: [https://pyinstaller.org](https://pyinstaller.org)
-* **Stack Overflow & Technical Forums**: Insights and solutions for encryption, GUI design, and software packaging.
-* **Online Technical Tutorials**: Guides on developing encryption tools and creating standalone executables.
-
-**Abstract**
-
-This project presents the design and implementation of a Python-based file encryption and decryption tool aimed at enhancing data security. By leveraging the `cryptography` library, the tool enables symmetric encryption to safeguard confidential files. Core functionalities include password-protected key management, automated file backups, and an intuitive GUI built with Tkinter. Packaged as a standalone executable via PyInstaller, the tool ensures portability across Windows environments. Through this project, students gain practical experience in cryptography, secure file handling, GUI design, and software deployment, establishing a foundation for advanced cybersecurity applications.
+Faazil Mirza Shaikh
+B.E. Computer Science -- M.H. Saboo Siddik College of Engineering, Mumbai
